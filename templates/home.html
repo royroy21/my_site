@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<img class="center_image"
+     src="{{ url_for('static', filename='images/space_2.jpg') }}"
+     alt="Hmm.. shouldn't there be an alien here??" height="250px" width="250px">
+<h2><a href="{{ url_for('space_invaders') }}">PRESS START</a></h2>
+{% endblock %}
