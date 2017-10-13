@@ -1,9 +1,6 @@
 body {
     background-color: black;
-    font-family: Verdana;
-    margin: 0 0 50px 0;
-    padding: 0;
-    text-align: center;
+    font-family: Impact;
 }
 canvas {
     background-color: black;
@@ -21,8 +18,7 @@ canvas {
     padding: 10px;
 }
 #main {
-    color: lightgreen;
-    padding-top:150px;
+    color: white;
 }
 #footer {
     bottom: 0px;
@@ -33,6 +29,12 @@ canvas {
     margin-bottom: 0px;
     position: fixed;
     right: 0px;
+    text-align: center;
+}
+#home_screen {
+    margin-top:150px;
+    padding: 0;
+    text-align: center;
 }
 .center_image {
     display: block;
