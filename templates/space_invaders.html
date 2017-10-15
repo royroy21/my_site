@@ -7,7 +7,7 @@ var alSprite, taSprite, ciSprite;
 var aliens, dir, tank, bullets, cities;
 
 function main() {
-    display = new Screen(502, 600);
+    display = new Screen(504, 600);
     input = new InputHandeler();
 
     var img = new Image();
@@ -37,6 +37,8 @@ function init() {
         x: (display.width - taSprite.w) / 2,
         y: display.height - (30 + taSprite.h)
     };
+
+    bullets = [];
 
     aliens = [];
     var rows = [1, 0, 0, 2, 2];
@@ -72,6 +74,36 @@ function update() {
     };
     tank.x = Math.max(Math.min(tank.x, display.width - (30 + taSprite.w)), 30);
 
+    if (input.isPressed(32)) { // spacebar
+        bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#fff"));
+    };
+
+    for (var i = 0, len = bullets.length; i < len; i++) {
+        var b = bullets[i];
+
+        b.update();
+
+        if (b.y + b.height < 0 || b.y > display.height) {
+            bullets.splice(i, 1);
+            i--;
+            len--;
+            continue;
+        };
+    };
+
+    if (Math.random() < 0.03 && aliens.length > 0) {
+        var a = aliens[Math.round(Math.random() * (aliens.length -1))];
+
+        for (var i = 0, len = bullets.length; i < len; i++) {
+            var b = aliens[i];
+
+            if (AABBIntersect(a.x, a.y, a.w, 100, b.x, b.y, b.w, b.h)) {
+                a = b;
+            };
+        };
+        bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 4, 2, 4, '#fff'));
+    };
+
     frames++;
     if (frames % lvFrame === 0) {
         spFrame = (spFrame + 1) % 2;
@@ -84,7 +116,7 @@ function update() {
             _max = Math.max(_max, a.x + a.w);
             _min = Math.min(_min, a.x);
         }
-        if (_max > display.width || _min < 30) {
+        if (_max > display.width - 30 || _min < 30) {
             dir *= -1;
             for (var i = 0, len = aliens.length; i < len; i++) {
                 aliens[i].x += 30 * dir;
@@ -100,6 +132,12 @@ function render() {
         var a = aliens[i];
         display.drawSprite(a.sprite[spFrame], a.x, a.y);
     }
+
+    display.ctx.save();
+    for (var i = 0, len = bullets.length; i < len; i++) {
+        display.drawBullet(bullets[i]);
+    };
+    display.ctx.restore();
 
     display.drawSprite(tank.sprite, tank.x, tank.y);
 };
