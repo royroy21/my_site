@@ -5,6 +5,11 @@ function AABBIntersect(ax, ay, aw, ah, bx, by, bw, bh) {
     return ax < bx+bw && bx < ax+aw && ay < by+bh && by < ay+ah;
 };
 
+// Kill tank
+function KillTank(bullet_x, bullet_y, tank_x) {
+    return bullet_x > tank_x && bullet_x < tank_x+22 && bullet_y > 554 && bullet_y < 564;
+};
+
 // bullets
 function Bullet(x, y, vely, w, h, colour) {
     this.x = x;
