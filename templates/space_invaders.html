@@ -264,12 +264,20 @@ function update() {
 		bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 2, 2, 4, "yellow"));
 	}
 
-	// check to see if alien bullets hit tank
+	// Check to see if alien bullets hit tank
 	for (var i = 0, len = bullets.length; i < len; i++) {
 		var alien_bullet = bullets[i];
 		alien_bullet.update();
 		if (KillTank(alien_bullet.x, alien_bullet.y, tank.x)) {
-			alert('you have been hit', alien_bullet.x, alien_bullet.y, tank.x);
+			alert('GAME OVER');
+		}
+	}
+
+	// Check to see if aliens hit cities
+	for (var i = 0, len = aliens.length; i < len; i++) {
+		var alien = aliens[i];
+		if (alien.y > 500) {
+			alert('GAME OVER');
 		}
 	}
 
