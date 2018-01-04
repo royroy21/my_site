@@ -190,7 +190,7 @@ function update() {
 	// append new bullet to the bullet array if spacebar is
 	// pressed
 	if (input.isPressed(32)) { // Space
-		bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#fff"));
+		bullets.push(new Bullet(tank.x + 10, tank.y, -4, 2, 6, "red"));
 	}
 
 	// update all bullets position and checks
@@ -261,8 +261,18 @@ function update() {
 			}
 		}
 		// create and append new bullet
-		bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 4, 2, 4, "#fff"));
+		bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 2, 2, 4, "yellow"));
 	}
+
+	// check to see if alien bullets hit tank
+	for (var i = 0, len = bullets.length; i < len; i++) {
+		var alien_bullet = bullets[i];
+		alien_bullet.update();
+		if (KillTank(alien_bullet.x, alien_bullet.y, tank.x)) {
+			alert('you have been hit', alien_bullet.x, alien_bullet.y, tank.x);
+		}
+	}
+
 	// update the aliens at the current movement frequence
 	if (frames % lvFrame === 0) {
 		spFrame = (spFrame + 1) % 2;
