@@ -1,6 +1,7 @@
 body {
     background-color: black;
     font-family: Impact;
+    font-size: 1.1em;
 }
 #canvas {
     background-color: darkgreen;
@@ -44,7 +45,7 @@ body {
     text-align: center;
 }
 #home_screen {
-    margin-top:150px;
+    color: lightgreen;;
     padding: 0;
     text-align: center;
 }

@@ -300,7 +300,7 @@ function update() {
 		var alien_bullet = bullets[i];
 		alien_bullet.update();
 		if (KillTank(alien_bullet.x, alien_bullet.y, tank.x, display.height)) {
-			alert('GAME OVER');
+			window.location.href = "{{ url_for('player_fail') }}";
 		}
 	}
 
@@ -308,8 +308,13 @@ function update() {
 	for (var i = 0, len = aliens.length; i < len; i++) {
 		var alien = aliens[i];
 		if (alien.y > (display.height - 100)) {
-			alert('GAME OVER');
+			window.location.href = "{{ url_for('player_fail') }}";
 		}
+	}
+
+	// Check if all aliens are dead
+	if (aliens.length == 0) {
+		window.location.href = "{{ url_for('player_success') }}";
 	}
 
 	// update the aliens at the current movement frequence
@@ -364,8 +369,8 @@ function render() {
 main();
 </script>
 <div id="on_screen_buttons">
-	<button class="button" onmouseover="moveTankLeft()"><<<</button>
-	<button class="button" onmouseover="moveTankRight()">>>></button>
+	<button class="button" onclick="moveTankLeft()"><<<</button>
+	<button class="button" onclick="moveTankRight()">>>></button>
 	<button class="button" onclick="fireTank()">FIRE</button>
 </div>
 {% endblock %}
