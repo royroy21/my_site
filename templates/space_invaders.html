@@ -2,10 +2,6 @@
 {% block content %}
 <script>
 var
-
-/**
- * Game objects
- */
 display,
 input,
 frames,
@@ -22,11 +18,9 @@ tank,
 bullets,
 cities;
 
-/**
- * Initiate and start the game
- */
+// Initiate and start the game
 function main() {
-	// create game canvas and inputhandeler
+	// Create game canvas and inputhandeler
 	var clientWidth = window.innerWidth
 	|| document.documentElement.clientWidth
 	|| document.body.clientWidth;
@@ -41,7 +35,7 @@ function main() {
 	display = new Screen(canvasWidth, canvasHeight);
 	input = new InputHandeler();
 
-	// create all sprites fram assets image
+	// Create all sprites fram assets image
 	var img = new Image();
 	img.addEventListener("load", function() {
 
@@ -53,35 +47,34 @@ function main() {
 		taSprite = new Sprite(this, 62, 0, 22, 16);
 		ciSprite = new Sprite(this, 84, 8, 36, 24);
 
-		// initate and run the game
+		// Initiate and run the game
 		init();
 		run();
 	});
     img.src = "{{ url_for('static', filename='res/invaders.png') }}";
 };
 
-/**
- * Initate game objects
- */
+
+// Initiate game objects
 function init() {
-	// set start settings
+	// Set start settings
 	frames  = 0;
 	spFrame = 0;
 	lvFrame = 60;
 
 	dir = 1;
 
-	// create the tank object
+	// Create the tank object
 	tank = {
 		sprite: taSprite,
 		x: (display.width - taSprite.w) / 2,
 		y: display.height - (30 + taSprite.h)
 	};
 
-	// initatie bullet array
+	// Initiate bullet array
 	bullets = [];
 
-	// create the cities object (and canvas)
+	// Create the cities object (and canvas)
 	cities = {
 		canvas: null,
 		ctx: 	null,
@@ -89,11 +82,9 @@ function init() {
 		y: tank.y - (30 + ciSprite.h),
 		h: ciSprite.h,
 
-		/**
-		 * Create canvas and game graphic context
-		 */
+		// Create canvas and game graphic context
 		init: function() {
-			// create canvas and grab 2d context
+			// Create canvas and grab 2d context
 			this.canvas = document.createElement("canvas");
 			this.canvas.width = display.width;
 			this.canvas.height = this.h;
@@ -108,12 +99,7 @@ function init() {
 			}
 		},
 
-		/**
-		 * Create damage effect on city-canvas
-		 *
-		 * @param  {number} x x-coordinate
-		 * @param  {number} y y-coordinate
-		 */
+		// Create damage effect on city-canvas
 		generateDamage: function(x, y) {
 			// round x, y position
 			x = Math.floor(x/2) * 2;
@@ -129,17 +115,11 @@ function init() {
 			this.ctx.clearRect(x-2, y-6, 2, 2);
 		},
 
-		/**
-		 * Check if pixel at (x, y) is opaque
-		 *
-		 * @param  {number} x x-coordinate
-		 * @param  {number} y y-coordinate
-		 * @return {bool}     boolean value if pixel opaque
-		 */
+		// Check if pixel at (x, y) is opaque
 		hits: function(x, y) {
-			// transform y value to local coordinate system
+			// Transform y value to local coordinate system
 			y -= this.y;
-			// get imagedata and check if opaque
+			// Get imagedata and check if opaque
 			var data = this.ctx.getImageData(x, y, 1, 1);
 			if (data.data[3] !== 0) {
 				this.generateDamage(x, y);
@@ -148,17 +128,16 @@ function init() {
 			return false;
 		}
 	};
-	cities.init(); // initiate the cities
+	cities.init();
 
-	// create and populate alien array
+	// Create and populate alien array
 	var numberOfAliens = display.width == 504 ? 10 : 5;
 	aliens = [];
 	var rows = [1, 0, 0, 2, 2];
 	for (var i = 0, len = rows.length; i < len; i++) {
 		for (var j = 0; j < numberOfAliens; j++) {
 			var a = rows[i];
-			// create right offseted alien and push to alien
-			// array
+			// create right offseted alien and push to alien array
 			aliens.push({
 				sprite: alSprite[a],
 				x: 30 + j*30 + [0, 4, 0][a],
@@ -185,10 +164,7 @@ function fireTank() {
 	audio_shoot_1.play();
 };
 
-/**
- * Wrapper around the game loop function, updates and renders
- * the game
- */
+// Wrapper around the game loop function, updates and renders the game
 function run() {
 	var loop = function() {
 		update();
@@ -199,14 +175,13 @@ function run() {
 	window.requestAnimationFrame(loop, display.canvas);
 };
 
-/**
- * Update the game logic
- */
+
+// Update the game logic
 function update() {
-	// x array
+	// Colours for alien bullets
 	var colours = ['orange', 'yellow', 'lightgreen', 'lightblue'];
 
-	// update the frame count
+	// Update the frame count
 	frames++;
 
 	// Move tank using on left keyboard button
@@ -214,33 +189,32 @@ function update() {
 		tank.x -= 4;
 	}
 	// Move tank using on right keyboard button
-	if (input.isDown(39)) { // Right
+	if (input.isDown(39)) {
 		tank.x += 4;
 	}
-	// append new bullet to the bullet array if spacebar is pressed
+	// Append new bullet to the bullet array if spacebar is pressed
 	if (input.isPressed(32)) {
 		bullets.push(new Bullet(tank.x + 10, tank.y, -4, 6, 6, "red"));
 		var audio_shoot_1 = document.getElementById("audio_shoot_1");
 		audio_shoot_1.play();
 	}
 
-	// keep the tank sprite inside of the canvas
+	// Keep the tank sprite inside of the canvas
 	tank.x = Math.max(Math.min(tank.x, display.width - (30 + taSprite.w)), 30);
 
-	// update all bullets position and checks
+	// Update all bullets position and checks
 	for (var i = 0, len = bullets.length; i < len; i++) {
 		var b = bullets[i];
 		b.update();
-		// remove bullets outside of the canvas
+		// Remove bullets outside of the canvas
 		if (b.y + b.height < 0 || b.y > display.height) {
 			bullets.splice(i, 1);
 			i--;
 			len--;
 			continue;
 		}
-		// check if bullet hits any city
-		var h2 = b.height * 0.5; // half height is used for
-								 // simplicity
+		// Check if bullet hits any city
+		var h2 = b.height * 0.5;
 		if (cities.y < b.y+h2 && b.y+h2 < cities.y + cities.h) {
 			if (cities.hits(b.x, b.y+h2)) {
 				bullets.splice(i, 1);
@@ -249,7 +223,7 @@ function update() {
 				continue;
 			}
 		}
-		// check if bullet hit any aliens
+		// Check if bullet hit any aliens
 		for (var j = 0, len2 = aliens.length; j < len2; j++) {
 			var a = aliens[j];
 			if (AABBIntersect(b.x, b.y, b.width, b.height, a.x, a.y, a.w, a.h)) {
@@ -286,10 +260,10 @@ function update() {
 			}
 		}
 	}
-	// makes the alien shoot in an random fashion
+	// Makes the alien shoot in an random fashion
 	if (Math.random() < 0.03 && aliens.length > 0) {
 		var a = aliens[Math.round(Math.random() * (aliens.length - 1))];
-		// iterate through aliens and check collision to make
+		// Iterate through aliens and check collision to make
 		// sure only shoot from front line
 		for (var i = 0, len = aliens.length; i < len; i++) {
 			var b = aliens[i];
@@ -298,7 +272,7 @@ function update() {
 				a = b;
 			}
 		}
-		// create and append new bullet
+		// Create and append new bullet
 		var colour = colours[Math.floor(Math.random() * colours.length)];
 		bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 2, 4, 4, colour));
 		var audio_shoot_2 = document.getElementById("audio_shoot_2");
@@ -327,23 +301,22 @@ function update() {
 		window.location.href = "{{ url_for('player_success') }}";
 	}
 
-	// update the aliens at the current movement frequence
+	// Update the aliens at the current movement frequence
 	if (frames % lvFrame === 0) {
 		spFrame = (spFrame + 1) % 2;
 
 		var _max = 0, _min = display.width;
-		// iterate through aliens and update postition
+		// Iterate through aliens and update postition
 		for (var i = 0, len = aliens.length; i < len; i++) {
 			var a = aliens[i];
 			a.x += 30 * dir;
-			// find min/max values of all aliens for direction
-			// change test
+			// Find min/max values of all aliens for direction change test
 			_max = Math.max(_max, a.x + a.w);
 			_min = Math.min(_min, a.x);
 		}
-		// check if aliens should move down and change direction
+		// Check if aliens should move down and change direction
 		if (_max > display.width - 30 || _min < 30) {
-			// mirror direction and update position
+			// Mirror direction and update position
 			dir *= -1;
 			for (var i = 0, len = aliens.length; i < len; i++) {
 				aliens[i].x += 30 * dir;
@@ -353,25 +326,25 @@ function update() {
 	}
 };
 
-/**
- * Render the game state to the canvas
- */
+
+// Render the game state to the canvas
 function render() {
-	display.clear(); // clear the game canvas
-	// draw all aliens
+	display.clear();
+
+	// Draw all aliens
 	for (var i = 0, len = aliens.length; i < len; i++) {
 		var a = aliens[i];
 		display.drawSprite(a.sprite[spFrame], a.x, a.y);
 	}
-	// save contetx and draw bullet then restore
+	// Save context and draw bullet then restore
 	display.ctx.save();
 	for (var i = 0, len = bullets.length; i < len; i++) {
 		display.drawBullet(bullets[i]);
 	}
 	display.ctx.restore();
-	// draw the city graphics to the canvas
+	// Draw the city graphics to the canvas
 	display.ctx.drawImage(cities.canvas, 0, cities.y);
-	// draw the tank sprite
+	// Draw the tank sprite
 	display.drawSprite(tank.sprite, tank.x, tank.y);
 };
 
