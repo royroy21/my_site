@@ -2,23 +2,12 @@ body {
     background-color: black;
     font-family: Impact;
 }
-canvas {
+#canvas {
     background-color: black;
-    border: 1px solid white;
-    bottom: 0;
+    border: 1px solid green;
     display: block;
-    left: 0;
-    margin: auto;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-#header {
-    font-size: 1.2em;
-    padding: 10px;
-}
-#main {
-    color: white;
+    margin-left: auto;
+    margin-right: auto;
 }
 #footer {
     bottom: 0px;
