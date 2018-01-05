@@ -181,6 +181,8 @@ function moveTankRight() {
 // Fire tank using on screen fire button
 function fireTank() {
 	bullets.push(new Bullet(tank.x + 10, tank.y, -4, 6, 6, "red"));
+	var audio_shoot_1 = document.getElementById("audio_shoot_1");
+	audio_shoot_1.play();
 };
 
 /**
@@ -218,6 +220,8 @@ function update() {
 	// append new bullet to the bullet array if spacebar is pressed
 	if (input.isPressed(32)) {
 		bullets.push(new Bullet(tank.x + 10, tank.y, -4, 6, 6, "red"));
+		var audio_shoot_1 = document.getElementById("audio_shoot_1");
+		audio_shoot_1.play();
 	}
 
 	// keep the tank sprite inside of the canvas
@@ -249,6 +253,10 @@ function update() {
 		for (var j = 0, len2 = aliens.length; j < len2; j++) {
 			var a = aliens[j];
 			if (AABBIntersect(b.x, b.y, b.width, b.height, a.x, a.y, a.w, a.h)) {
+
+				var alien_killed = document.getElementById("alien_killed");
+				alien_killed.play();
+
 				aliens.splice(j, 1);
 				j--;
 				len2--;
@@ -293,6 +301,8 @@ function update() {
 		// create and append new bullet
 		var colour = colours[Math.floor(Math.random() * colours.length)];
 		bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 2, 4, 4, colour));
+		var audio_shoot_2 = document.getElementById("audio_shoot_2");
+		audio_shoot_2.play()
 	}
 
 	// Check to see if alien bullets hit tank
@@ -368,6 +378,9 @@ function render() {
 // start and run the game
 main();
 </script>
+<audio id="audio_shoot_1" src="{{ url_for('static', filename='sounds/shoot_1.wav') }}" autostart="false" ></audio>
+<audio id="audio_shoot_2" src="{{ url_for('static', filename='sounds/shoot_2.wav') }}" autostart="false" ></audio>
+<audio id="alien_killed" src="{{ url_for('static', filename='sounds/alien_killed.wav') }}" autostart="false" ></audio>
 <div id="on_screen_buttons">
 	<button class="button" onclick="moveTankLeft()"><<<</button>
 	<button class="button" onclick="moveTankRight()">>>></button>

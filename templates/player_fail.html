@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+<audio autoplay>
+    <source src="{{ url_for('static', filename='sounds/player_killed.wav') }}">
+</audio>
 <div id="home_screen">
+    <img class="center_image"
+         src="{{ url_for('static', filename='images/space_2.jpg') }}"
+         alt="Hmm.. shouldn't there be an alien here??" height="250px" width="250px">    
     <h1>Oh dear you failed!</h1>
     <h2><a href="{{ url_for('space_invaders') }}">erm... maybe try again?</a></h2>
 </div>

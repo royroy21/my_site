@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+<audio autoplay>
+    <source src="{{ url_for('static', filename='sounds/player_win.wav') }}">
+</audio>
 <div id="home_screen">
     <img class="center_image"
          src="{{ url_for('static', filename='images/space_2.jpg') }}"
