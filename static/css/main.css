@@ -3,11 +3,34 @@ body {
     font-family: Impact;
 }
 #canvas {
-    background-color: black;
-    border: 1px solid green;
+    background-color: darkgreen;
+    border: 2px solid green;
+    border-radius: 25px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+#on_screen_buttons {
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.button {
+    color: lightgreen;
+    background-color: black;
+    border: none;
+    padding: 0 20px 0 20px;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
 }
 #footer {
     bottom: 0px;
