@@ -18,6 +18,9 @@ tank,
 bullets,
 cities;
 
+var moveTankLeft = false;
+var moveTankRight = false;
+
 // Initiate and start the game
 function main() {
 	// Create game canvas and inputhandeler
@@ -150,12 +153,16 @@ function init() {
 };
 
 // Move tank using on screen left button
-function moveTankLeft() {
-	tank.x -= 4;
+function moveTankLeftButton() {
+	moveTankLeft = true;
 };
 // Move tank using on screen right button
-function moveTankRight() {
-	tank.x += 4;
+function moveTankRightButton() {
+	moveTankRight = true;
+};
+function stopTankButton(){
+	moveTankLeft = false;
+	moveTankRight = false;
 };
 // Fire tank using on screen fire button
 function fireTank() {
@@ -185,11 +192,11 @@ function update() {
 	frames++;
 
 	// Move tank using on left keyboard button
-	if (input.isDown(37)) {
+	if (input.isDown(37) || moveTankLeft) {
 		tank.x -= 4;
 	}
 	// Move tank using on right keyboard button
-	if (input.isDown(39)) {
+	if (input.isDown(39) || moveTankRight) {
 		tank.x += 4;
 	}
 	// Append new bullet to the bullet array if spacebar is pressed
@@ -355,8 +362,8 @@ main();
 <audio id="audio_shoot_2" src="{{ url_for('static', filename='sounds/shoot_2.wav') }}" autostart="false" ></audio>
 <audio id="alien_killed" src="{{ url_for('static', filename='sounds/alien_killed.wav') }}" autostart="false" ></audio>
 <div id="on_screen_buttons">
-	<button class="button" onclick="moveTankLeft()"><<<</button>
-	<button class="button" onclick="moveTankRight()">>>></button>
+	<button class="button" onmousedown="moveTankLeftButton()" onmouseup="stopTankButton()"><<<</button>
+	<button class="button" onmousedown="moveTankRightButton()" onmouseup="stopTankButton()">>>></button>
 	<button class="button" onclick="fireTank()">FIRE</button>
 </div>
 {% endblock %}
