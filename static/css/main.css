@@ -17,8 +17,7 @@ body {
     bottom: 0px;
     left: 0px;
     right: 0px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 10px auto;
 }
 .button {
     color: lightgreen;
