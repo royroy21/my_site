@@ -1,28 +1,36 @@
 body {
     background-color: black;
-    font-family: Verdana;
-    margin: 0 0 50px 0;
-    padding: 0;
-    text-align: center;
+    font-family: Impact;
+    font-size: 1.1em;
 }
-canvas {
-    background-color: black;
-    border: 1px solid white;
-    bottom: 0;
+#canvas {
+    background-color: darkgreen;
+    border: 2px solid green;
+    border-radius: 25px;
     display: block;
-    left: 0;
-    margin: auto;
-    position: absolute;
-    right: 0;
-    top: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
-#header {
-    font-size: 1.2em;
-    padding: 10px;
+#on_screen_buttons {
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: 0 auto 10px auto;
 }
-#main {
+.button {
     color: lightgreen;
-    padding-top:150px;
+    background-color: black;
+    border: none;
+    padding: 0 20px 0 20px;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
 }
 #footer {
     bottom: 0px;
@@ -33,6 +41,12 @@ canvas {
     margin-bottom: 0px;
     position: fixed;
     right: 0px;
+    text-align: center;
+}
+#home_screen {
+    color: lightgreen;;
+    padding: 0;
+    text-align: center;
 }
 .center_image {
     display: block;

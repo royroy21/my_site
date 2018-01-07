@@ -1,8 +1,32 @@
-// Helper functions
+// Intersect
+function AABBIntersect(ax, ay, aw, ah, bx, by, bw, bh) {
+    return ax < bx+bw && bx < ax+aw && ay < by+bh && by < ay+ah;
+};
+
+// Kill tank
+function KillTank(bullet_x, bullet_y, tank_x, display_height) {
+    var tankStart = display_height - 46;
+    var tankEnd = display_height - 36;
+    return bullet_x > tank_x && bullet_x < tank_x+22 && bullet_y > tankStart && bullet_y < tankEnd;
+};
+
+// bullets
+function Bullet(x, y, vely, w, h, colour) {
+    this.x = x;
+    this.y = y;
+    this.vely = vely;
+    this.width = w;
+    this.height = h;
+    this.colour = colour;
+};
+Bullet.prototype.update = function () {
+    this.y += this.vely;
+};
 
 // Screen
 function Screen(width, height) {
     this.canvas = document.createElement("canvas");
+    this.canvas.setAttribute("id", "canvas");
     this.canvas.width = this.width = width;
     this.canvas.height = this.height = height;
     this.ctx = this.canvas.getContext("2d");
@@ -14,6 +38,10 @@ Screen.prototype.clear = function () {
 };
 Screen.prototype.drawSprite = function(sp, x, y) {
     this.ctx.drawImage(sp.img, sp.x, sp.y, sp.w, sp.h, x, y, sp.w, sp.h);
+};
+Screen.prototype.drawBullet = function(bullet) {
+    this.ctx.fillStyle = bullet.colour;
+    this.ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
 };
 
 // Sprite
