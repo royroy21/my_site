@@ -1,13 +1,13 @@
-// Helper functions
-
 // Intersect
 function AABBIntersect(ax, ay, aw, ah, bx, by, bw, bh) {
     return ax < bx+bw && bx < ax+aw && ay < by+bh && by < ay+ah;
 };
 
 // Kill tank
-function KillTank(bullet_x, bullet_y, tank_x) {
-    return bullet_x > tank_x && bullet_x < tank_x+22 && bullet_y > 554 && bullet_y < 564;
+function KillTank(bullet_x, bullet_y, tank_x, display_height) {
+    var tankStart = display_height - 46;
+    var tankEnd = display_height - 36;
+    return bullet_x > tank_x && bullet_x < tank_x+22 && bullet_y > tankStart && bullet_y < tankEnd;
 };
 
 // bullets
@@ -26,6 +26,7 @@ Bullet.prototype.update = function () {
 // Screen
 function Screen(width, height) {
     this.canvas = document.createElement("canvas");
+    this.canvas.setAttribute("id", "canvas");
     this.canvas.width = this.width = width;
     this.canvas.height = this.height = height;
     this.ctx = this.canvas.getContext("2d");

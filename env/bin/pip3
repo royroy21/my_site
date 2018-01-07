@@ -1,4 +1,4 @@
-#!/Users/royhanley/dev/my_site/env/bin/python3
+#!/vagrant/env/bin/python3
 
 # -*- coding: utf-8 -*-
 import re

@@ -1,3 +1,5 @@
 .DS_Store
 __pycache__/
 help_me.txt
+.vagrant/
+ubuntu-xenial-16.04-cloudimg-console.log
