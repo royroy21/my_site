@@ -21,6 +21,8 @@ cities;
 var moveTankLeft = false;
 var moveTankRight = false;
 
+var games_failed = parseInt({{ games_failed }});
+
 // Initiate and start the game
 function main() {
 	// Create game canvas and inputhandeler
@@ -137,6 +139,17 @@ function init() {
 	var numberOfAliens = display.width == 504 ? 10 : 5;
 	aliens = [];
 	var rows = [1, 0, 0, 2, 2];
+
+	// Remove two rows of aliens for every game failed
+	for (var i = 0, len = games_failed; i < len; i++) {
+		rows.pop();
+		rows.pop();
+	}
+	// There must always be one row of number of aliens
+	if (rows.length == 0) {
+		rows = [1];
+	}
+
 	for (var i = 0, len = rows.length; i < len; i++) {
 		for (var j = 0; j < numberOfAliens; j++) {
 			var a = rows[i];
@@ -165,8 +178,11 @@ function stopTankButton(){
 	moveTankRight = false;
 };
 // Fire tank using on screen fire button
-function fireTank() {
+function fireTankBullet() {
 	bullets.push(new Bullet(tank.x + 10, tank.y, -4, 6, 6, "red"));
+}
+function fireTank() {
+	fireTankBullet();
 	var audio_shoot_1 = document.getElementById("audio_shoot_1");
 	audio_shoot_1.play();
 };
@@ -174,7 +190,11 @@ function fireTank() {
 // Wrapper around the game loop function, updates and renders the game
 function run() {
 	var loop = function() {
-		update();
+		var tankKilled = update();
+		if (tankKilled) {
+			window.location.href = "{{ url_for('player_fail') }}";
+			return;
+		}
 		render();
 
 		window.requestAnimationFrame(loop, display.canvas);
@@ -201,7 +221,7 @@ function update() {
 	}
 	// Append new bullet to the bullet array if spacebar is pressed
 	if (input.isPressed(32)) {
-		bullets.push(new Bullet(tank.x + 10, tank.y, -4, 6, 6, "red"));
+		fireTankBullet();
 		var audio_shoot_1 = document.getElementById("audio_shoot_1");
 		audio_shoot_1.play();
 	}
@@ -245,30 +265,35 @@ function update() {
 				i--;
 				len--;
 				// increase the movement frequence of the aliens
-				// when there are less of them
-				switch (len2) {
-					case 30: {
-						this.lvFrame = 40;
-						break;
-					}
-					case 10: {
-						this.lvFrame = 20;
-						break;
-					}
-					case 5: {
-						this.lvFrame = 15;
-						break;
-					}
-					case 1: {
-						this.lvFrame = 6;
-						break;
+				// when there are less of them only if player
+				// hasn't already failed twice
+				if (games_failed < 2) {
+					switch (len2) {
+						case 30: {
+							this.lvFrame = 40;
+							break;
+						}
+						case 10: {
+							this.lvFrame = 20;
+							break;
+						}
+						case 5: {
+							this.lvFrame = 15;
+							break;
+						}
+						case 1: {
+							this.lvFrame = 6;
+							break;
+						}
 					}
 				}
 			}
 		}
 	}
 	// Makes the alien shoot in an random fashion
-	if (Math.random() < 0.03 && aliens.length > 0) {
+	// If a number of games are failed reduce bullets
+	randomBulletsAmount = games_failed == 2 ? 0.003 : 0.03;
+	if (Math.random() < randomBulletsAmount && aliens.length > 0) {
 		var a = aliens[Math.round(Math.random() * (aliens.length - 1))];
 		// Iterate through aliens and check collision to make
 		// sure only shoot from front line
@@ -291,7 +316,7 @@ function update() {
 		var alien_bullet = bullets[i];
 		alien_bullet.update();
 		if (KillTank(alien_bullet.x, alien_bullet.y, tank.x, display.height)) {
-			window.location.href = "{{ url_for('player_fail') }}";
+			return true;
 		}
 	}
 
@@ -316,7 +341,7 @@ function update() {
 		// Iterate through aliens and update postition
 		for (var i = 0, len = aliens.length; i < len; i++) {
 			var a = aliens[i];
-			a.x += 30 * dir;
+			a.x += 20 * dir;
 			// Find min/max values of all aliens for direction change test
 			_max = Math.max(_max, a.x + a.w);
 			_min = Math.min(_min, a.x);
