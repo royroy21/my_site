@@ -1,4 +1,6 @@
-from flask import Flask, render_template, session
+import pdfkit
+
+from flask import Flask, make_response, render_template, session
 from flask_session import Session
 
 app = Flask(__name__)
@@ -22,7 +24,8 @@ def space_invaders():
 @app.route('/player-fail')
 def player_fail():
     session['games_failed'] += 1
-    return render_template('player_fail.html')
+    return render_template(
+        'player_fail.html', games_failed=session['games_failed'])
 
 
 @app.route('/player-success')
@@ -32,5 +35,11 @@ def player_success():
 
 @app.route('/download-cv')
 def download_cv():
-    # download CV
-    return
+    rendered = render_template('cv.html')
+    pdf = pdfkit.from_string(rendered, False)
+
+    response = make_response(pdf)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] \
+        = 'attachment; filename=roy_hanley_cv.pdf'
+    return response

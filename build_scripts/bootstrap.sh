@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 apt-get update
-apt-get -y install python3-pip redis-server
+apt-get -y install python3-pip redis-server xvfb openssl build-essential xorg libssl-dev
 
 # Set up virtual env
 if ! [ -L /vagrant/env ]; then
