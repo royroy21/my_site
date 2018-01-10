@@ -22,9 +22,9 @@ body {
 .button {
     color: lightgreen;
     background-color: black;
-    border: 2px solid green;
+    border: 1px solid black;
     border-radius: 25px;
-    padding: 0 50px 0 50px;
+    padding: 10px 20px 10px 20px;
     margin: 0;
     text-align: center;
     text-decoration: none;
