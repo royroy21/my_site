@@ -36,7 +36,8 @@ def player_success():
 @app.route('/download-cv')
 def download_cv():
     rendered = render_template('cv.html')
-    pdf = pdfkit.from_string(rendered, False)
+    config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
+    pdf = pdfkit.from_string(rendered, False, configuration=config)
 
     response = make_response(pdf)
     response.headers['Content-Type'] = 'application/pdf'
