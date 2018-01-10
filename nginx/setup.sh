@@ -8,5 +8,7 @@ ln -s /etc/nginx/sites-available/app_site /etc/nginx/sites-enabled/app_site
 
 echo "setting up nginx services (please wait...)"
 systemctl restart nginx
-sudo systemctl start app
-sudo systemctl enable app
+systemctl start app
+systemctl enable app
+mkdir -p /var/log/uwsgi
+chown -R ubuntu:ubuntu /var/log/uwsgi
