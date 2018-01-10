@@ -1,15 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<audio autoplay>
-    <source src="{{ url_for('static', filename='sounds/player_win.wav') }}">
-</audio>
-<div id="home_screen">
-    <img class="center_image"
-         src="{{ url_for('static', filename='images/space_2.jpg') }}"
-         alt="Hmm.. shouldn't there be an alien here??" height="250px" width="250px">
+    <audio autoplay>
+        <source src="{{ url_for('static', filename='sounds/player_win.wav') }}">
+    </audio>
     <h1>Glory is yours!</h1>
     <h2>You have defeated the aliens, your prize awaits you...</h2>
     <h2><a href="{{ url_for('download_cv') }}">DOWNLOAD ROY'S CV</a></h2>
-</div>
-<div id="footer"><h3>A RogDog Production</h3></div>
 {% endblock %}
