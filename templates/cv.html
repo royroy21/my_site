@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cv.css') }}">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Roy's CV</title>
+</head>
+<style>
+body {
+    font-family: "Times New Roman", Times, serif;
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, p {
+    margin: 0;
+    padding: 0;
+}
+.make_bold {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.margin_bottom {
+    margin-bottom: 10px;
+}
+.large_margin_bottom {
+    margin-bottom: 20px;
+}
+.experience_note {
+    font-size: 0.8em;
+    font-weight: bold;
+    text-align: center;
+}
+.gray_break {
+    background-color: #efefef;
+    height: 15px;
+    margin: 10px 0 10px 0;
+}
+#header {
+    background-color: #efefef;
+    height: 100px;
+    padding: 5px;
+}
+#address {
+    float: right;
+}
+#name {
+    margin-top: 40px;
+}
+#tag_line {
+    font-weight: bold;
+    margin: 10px 0 10px 0;
+    text-align: center;
+}
+</style>
+<body>
+    <div id="header">
+        <div id="address">
+            <p class="make_bold">
+3 Aldeburgh Street,<br />
+Greenwich,<br />
+London,<br />
+SE10 0RW<br />
+royhanley8@gmail.com<br />
+            </p>
+        </div>
+        <div id="name">
+            <h1>Roy Hanley</h1>
+            <h4 class="make_bold">Computer Programmer Resume</h4>
+        </div>
+    </div>
+    <p id="tag_line">Python/Django focused programmer experienced in developing data driven applications</p>
+    <div>
+        <h2 class="margin_bottom">Technology Summary</h2>
+        <p><span class="make_bold">Programming:</span> Python, Django, Flask, API design, Working with various 3rd party APIs, REST, ElasticSearch, JavaScript, AngularJS, Vue, HTML, CSS, UML, Agile, GIT</p>
+        <p><span class="make_bold">Systems:</span> Linux/Ubuntu, AWS, Apache, Gunicorn, Nginx, Vagrant, Celery, RabbitMQ, BASH</p>
+        <p><span class="make_bold">Networking:</span> TCP/IP, DNS, DHCP</p>
+        <p><span class="make_bold">Databases:</span> PostgreSQL, MySQL, SQlite, Redis</p>
+    </div>
+    <div class="gray_break"></div>
+    <div>
+        <h2 class="margin_bottom">Professional Experience</h2>
+        <div class="large_margin_bottom">
+            <h4 class="margin_bottom">Web Developer (08/2017-01/2018) BCMFort<br />(<a href="https://bcmfort.com/">https://bcmfort.com/</a>)</h4>
+            <p>Leading role in developing frontend/backend features for BCMFort's business continuity application</p>
+            <p>Refactoring of existing code base</p>
+            <p>Implement new testing strategy</p>
+        </div>
+        <div class="large_margin_bottom">
+            <h4>Python Developer (04/2015-04/2017) Ostmodern<br />(<a href="www.ostmodern.co.uk/">www.ostmodern.co.uk/</a>)</h4>
+            <p>Leading role in developing backend infracture for the BBCW video on demand application</p>
+            <p>Participated in the on going design, development and testing of "Skylark", the backend library on with many Ostmodern products rely upon</p>
+            <p>Designed and developed new features for existing apps such as BallBall.com, BFI Player and Olympic Player</p>
+            <p>Supported and upgraded existing products</p>
+            <p>Mentored Junior developers</p>
+        </div>
+        <div class="large_margin_bottom">
+            <h4 class="margin_bottom">Software and Database Developer (06/2012-03/2015) Thomas's London Day Schools<br />(<a href="www.thomas-s.co.uk/">www.thomas-s.co.uk/</a>)</h4>
+            <p>Participated in the design, development and testing of the new bespoke MIS (mass information system)</p>
+            <p>Transfer data from the old MIS to the new</p>
+            <p>Re-factoring of systems to run more efficiently</p>
+            <p>Developed multiple smaller programs that helped improve the productivity and efficiency of the schools, these include tools for data analysis and reporting</p>
+            <p>Participated in the design, testing and development of APIs to link various outside systems</p>
+            <p>Developed new procedures for requirements gathering, needs analysis, testing, scripting and documentation to strengthen quality and functionality of new and existing systems</p>
+        </div>
+        <div class="large_margin_bottom">
+            <h4 class="margin_bottom">Python Programmer (10/2011-06/2012). Creative Virtual<br />(<a href="www.creativevirtual.com">www.creativevirtual.com</a>)</h4>
+            <p>Assisted in the development of Virtual Assistants for a large number of clients such as 02, RSPCA, Virgin Media and Renault</p>
+            <p>Worked closely with clients to help ensure their on-line bots offered the best experience to the end user</p>
+            <p>Added extra functionality to online bots through the use of Python, various front-end technologies and APIs</p>
+            <p>Created various tools for use in data analysis, data transfer and testing</p>
+        </div>
+        <div class="large_margin_bottom">
+            <h4 class="margin_bottom">Network Administrator/Desktop Support (11/2010–10/2011) Steel Business Briefing<br />(<a href="www.steelbb.com">www.steelbb.com</a>)</h4>
+            <p>Desktop support for 280 staff worldwide</p>
+            <p>Improve and ensure network functionality</p>
+            <p>General network maintenance including server maintenance, patching, moving of devices and installation of network printers</p>
+            <p>Developed and implemented a backup strategy for workstations and servers</p>
+            <p>Installing and configured Cisco routers and hotspots</p>
+            <p>Configured VPN access</p>
+            <p>Configured DHCP and DNS</p>
+        </div>
+        <div>
+            <p class="experience_note">Note: My work experience before this date include many contacted roles while I worked in engineering/management positions in construction. If needed a detailed breakdown of this work can be supplied</p>
+        </div>
+    </div>
+    <br /><br />
+    <div>
+        <h2 class="margin_bottom">Education</h2>
+        <div class="large_margin_bottom">
+            <h4 class="margin_bottom">Birkbeck University: Web Technologies FD (2012-2015)</h4>
+            <p>Fundamentals of Information Technology</p>
+            <p>Introduction to Computer Systems</p>
+            <p>Introduction to Web Authoring</p>
+            <p>Introduction to Database Technology</p>
+            <p>Problem-Solving for Programming</p>
+            <p>Information Systems Concepts</p>
+            <p>Introduction to Programming</p>
+            <p>Mathematics for Computing</p>
+            <p>Working in Teams</p>
+            <p>Work-related Project</p>
+            <p>Information Systems Management</p>
+            <p>Software and Programming I</p>
+            <p>Web Data with XML, JSON and AJAX</p>
+            <p>Web Programming using PHP</p>
+            <p>Building Web Applications using MySQL and PHP</p>
+            <p>JavaScript</p>
+            <p>Advanced Web Authoring</p>
+            <p>Data Structures and Algorithms</p>
+        </div>
+        <div class="large_margin_bottom">
+            <h4 class="margin_bottom">Microsoft Certified Systems Administrator (2010)</h4>
+            <p>Installing, configuring and administering Microsoft Windows XP Professional (20-270)</p>
+            <p>Managing and maintaining a Microsoft Windows Server 2003 Environment (20-290)</p>
+            <p>Implementing, Managing and Maintaining a Microsoft Windows Server 2003 Network Infrastructure (20-291)</p>
+            <p>Implementing and Managing Microsoft Exchange Server 2003 (20-284)</p>
+        </div>
+        <div class="large_margin_bottom">
+            <h4 class="margin_bottom">Greenwich Community College (1998-2001)</h4>
+            <p>National diploma in Engineering (Level 3)</p>
+            <p>GNVQ in Engineering (Level 2)</p>
+        </div>
+        <div class="large_margin_bottom">
+            <h4 class="margin_bottom">St Mary and St Joseph’s RC Secondary School (1990-1996)</h4>
+            <p>9 GCSEs</p>
+        </div>
+    </div>
+    <div class="gray_break"></div>
+    <div>
+        <h2 class="margin_bottom">About Me</h2>
+        <p>
+At the workplace the friendly social type! I seek simple clean solutions over complex and have a need to do things
+the right way. Outside of work I enjoy socialising, going to gigs, playing music with friends and tinkering around with computers
+either playing games, coding or checking out the latest Linux distro. Future goals include getting better at Javascript!
+        </p>
+    </div>
+    <div class="gray_break"></div>
+    <div>
+        <h2 class="margin_bottom">References upon Request</h2>
+    </div>
+</body>
+</html>

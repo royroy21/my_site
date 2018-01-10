@@ -8,7 +8,12 @@
          src="{{ url_for('static', filename='images/space_2.jpg') }}"
          alt="Hmm.. shouldn't there be an alien here??" height="250px" width="250px">
     <h1>Oh dear you failed!</h1>
-    <h2><a href="{{ url_for('space_invaders') }}">erm... we'll make it a little easier for you</a></h2>
+    <h2><a href="{{ url_for('space_invaders') }}">
+        {% if games_failed == 3 %}
+        erm... maybe just try again
+        {% else %}
+        erm... we'll make it a little easier for you!
+        {% endif %}</a></h2>
 </div>
 <div id="footer"><h3>A RogDog Production</h3></div>
 {% endblock %}
