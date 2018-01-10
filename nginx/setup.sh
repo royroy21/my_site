@@ -10,3 +10,5 @@ echo "setting up nginx services (please wait...)"
 systemctl restart nginx
 sudo systemctl start app
 sudo systemctl enable app
+sudo mkdir -p /var/log/uwsgi
+sudo chown -R ubuntu:ubuntu /var/log/uwsgi
