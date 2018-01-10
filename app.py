@@ -30,6 +30,7 @@ def player_fail():
 
 @app.route('/player-success')
 def player_success():
+    session['games_failed'] = 0
     return render_template('player_success.html')
 
 
