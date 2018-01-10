@@ -3,7 +3,8 @@
     <audio autoplay>
         <source src="{{ url_for('static', filename='sounds/player_win.wav') }}">
     </audio>
-    <h1>Glory is yours!</h1>
-    <h2>You have defeated the aliens, your prize awaits you...</h2>
-    <h2><a href="{{ url_for('download_cv') }}">DOWNLOAD ROY'S CV</a></h2>
+    <h1>Glory is yours! Choose your prize...</h1>
+    <h1><a href="{{ url_for('download_cv') }}">1) DOWNLOAD ROY'S CV</a></h1>
+    <h1><a href="https://github.com/royroy21/my_site">2) VIEW SOURCE CODE</a></h1>
+    <h1><a href="{{ url_for('space_invaders') }}">3) PLAY AGAIN!</a></h1>
 {% endblock %}
