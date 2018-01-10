@@ -387,8 +387,10 @@ main();
 <audio id="audio_shoot_2" src="{{ url_for('static', filename='sounds/shoot_2.wav') }}" autostart="false" ></audio>
 <audio id="alien_killed" src="{{ url_for('static', filename='sounds/alien_killed.wav') }}" autostart="false" ></audio>
 <div id="on_screen_buttons">
-	<button class="button" onmousedown="moveTankLeftButton()" onmouseup="stopTankButton()">&#8678;</button>
-	<button class="button" onmousedown="moveTankRightButton()" onmouseup="stopTankButton()">&#8680;</button>
+	<button class="button" onmousedown="moveTankLeftButton()" onmouseup="stopTankButton()"
+	 	    ontouchstart="moveTankLeftButton()" ontouchend="stopTankButton()">&#8678;</button>
+	<button class="button" onmousedown="moveTankRightButton()" onmouseup="stopTankButton()"
+	        ontouchstart="moveTankRightButton()" ontouchend="stopTankButton()">&#8680;</button>
 	<button class="button" onclick="fireTank()">FIRE</button>
 </div>
 {% endblock %}
