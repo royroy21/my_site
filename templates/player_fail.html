@@ -3,11 +3,11 @@
     <audio autoplay>
         <source src="{{ url_for('static', filename='sounds/player_killed.wav') }}">
     </audio>
-    <h1>Oh dear you failed!</h1>
-    <h2><a href="{{ url_for('space_invaders') }}">
+    <h1>Oh dear you failed!</br>
+    <a href="{{ url_for('space_invaders') }}">
         {% if games_failed == 3 %}
         erm... maybe just try again
         {% else %}
         erm... we'll make it a little easier for you!
-        {% endif %}</a></h2>
+        {% endif %}</a></h1>
 {% endblock %}
