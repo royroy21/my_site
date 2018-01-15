@@ -4,20 +4,20 @@ body {
     font-size: 1.1em;
 }
 #canvas {
-    background-color: darkgreen;
-    border: 5px solid green;
-    border-radius: 25px;
+    background-color: #BE92B6;
+    /* border: 5px solid green; */
+    /* border-radius: 25px; */
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 0 auto;
 }
 #on_screen_buttons {
     text-align: center;
     position: fixed;
     bottom: 0px;
+    font-size: 100px;
     left: 0px;
     right: 0px;
-    margin: 0 auto 10px auto;
+    margin: 0 auto 0 auto;
 }
 .noselect {
   -webkit-touch-callout: none;
@@ -33,7 +33,7 @@ body {
     border:0 none !important;
 }
 .button {
-    color: lightgreen;
+    color: #ECF2E9;
     background-color: black;
     border: 1px solid black;
     border-radius: 25px;
@@ -50,7 +50,7 @@ body {
     background-color: black;
     width: 100%;
     bottom: 0px;
-    color: white;
+    color: #ECF2E9;
     font-size: 0.7em;
     height: 40px;
     left: 0px;
@@ -60,7 +60,7 @@ body {
     text-align: center;
 }
 #home_screen {
-    color: lightgreen;
+    color: #ECF2E9;
     padding: 0 0 50px 0;
     text-align: justify;
     margin-left: auto;
@@ -78,17 +78,17 @@ body {
     margin-right: auto;
 }
 a:link {
-    animation: blinker 2s linear infinite;
-    color: lightgreen;
+    color: #BE92B6;
+    background-color: #BECBB7;
     text-decoration:none;
 }
 a:hover {
-    color: hotpink;
+    color: #BE92B6;
+    background-color: #D4DCDA;
     text-decoration:none;
 }
 a:visited {
-    color: lightgreen;
+    color: #BE92B6;
+    background-color: #BECBB7;
     text-decoration:none;
 }
-@keyframes blinker {
-  50% { opacity: 0; }
