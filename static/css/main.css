@@ -4,7 +4,7 @@ body {
     font-size: 1.1em;
 }
 #canvas {
-    background-color: #BE92B6;
+    background-color: #339100;
     /* border: 5px solid green; */
     /* border-radius: 25px; */
     display: block;
@@ -14,10 +14,9 @@ body {
     text-align: center;
     position: fixed;
     bottom: 0px;
-    font-size: 100px;
     left: 0px;
     right: 0px;
-    margin: 0 auto 0 auto;
+    margin: 0 auto 10px auto;
 }
 .noselect {
   -webkit-touch-callout: none;
@@ -33,16 +32,14 @@ body {
     border:0 none !important;
 }
 .button {
-    color: #ECF2E9;
-    background-color: black;
-    border: 1px solid black;
-    border-radius: 25px;
-    padding: 10px 20px 10px 20px;
+    color: black;
+    background-color: #339100;
+    padding: 2px 5px 2px 5px;
     margin: 0;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -78,17 +75,17 @@ body {
     margin-right: auto;
 }
 a:link {
-    color: #BE92B6;
+    color: black;
     background-color: #BECBB7;
     text-decoration:none;
 }
 a:hover {
-    color: #BE92B6;
+    color: black;
     background-color: #D4DCDA;
     text-decoration:none;
 }
 a:visited {
-    color: #BE92B6;
+    color: black;
     background-color: #BECBB7;
     text-decoration:none;
 }
