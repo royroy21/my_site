@@ -9,13 +9,11 @@
     <title>Space Invaders!</title>
 </head>
 <body>
-    <div id="main">
-        <div id="home_screen">
-            <img class="center_image"
-                 src="{{ url_for('static', filename='images/space_2.jpg') }}"
-                 alt="Hmm.. shouldn't there be an alien here??" height="250px" width="250px">
-            {% block content %}{% endblock %}
-        </div>
+    <div id="home_screen">
+        <img class="center_image"
+             src="{{ url_for('static', filename='images/space_2.jpg') }}"
+             alt="Hmm.. shouldn't there be an alien here??" height="250px" width="250px">
+        {% block content %}{% endblock %}
     </div>
     <div id="footer"><h3>A RogDog Production</h3>
 </body>
