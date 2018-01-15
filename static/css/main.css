@@ -5,7 +5,7 @@ body {
 }
 #canvas {
     background-color: darkgreen;
-    border: 2px solid green;
+    border: 5px solid green;
     border-radius: 25px;
     display: block;
     margin-left: auto;
@@ -52,7 +52,7 @@ body {
     bottom: 0px;
     color: white;
     font-size: 0.7em;
-    height: 50px;
+    height: 40px;
     left: 0px;
     margin-bottom: 0px;
     position: fixed;
