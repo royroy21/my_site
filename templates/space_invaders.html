@@ -189,7 +189,7 @@ function stopTankButton(){
 };
 // Fire tank using on screen fire button
 function fireTankBullet() {
-	bullets.push(new Bullet(tank.x + 10, tank.y, -4, 6, 6, "red"));
+	bullets.push(new Bullet(tank.x + 10, tank.y, -4, 6, 6, "white"));
 }
 function fireTank() {
 	fireTankBullet();
@@ -215,9 +215,6 @@ function run() {
 
 // Update the game logic
 function update() {
-	// Colours for alien bullets
-	var colours = ['orange', 'yellow', 'lightgreen', 'lightblue'];
-
 	// Update the frame count
 	frames++;
 
@@ -315,8 +312,7 @@ function update() {
 			}
 		}
 		// Create and append new bullet
-		var colour = colours[Math.floor(Math.random() * colours.length)];
-		bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 2, 4, 4, colour));
+		bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 2, 4, 4, "white"));
 		var audio_shoot_2 = document.getElementById("audio_shoot_2");
 		audio_shoot_2.play()
 	}
