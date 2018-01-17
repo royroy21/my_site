@@ -14,6 +14,7 @@ body {
     text-align: center;
     position: fixed;
     bottom: 15px;
+    height: 50px;
     left: 0px;
     right: 0px;
     margin: 0 auto 10px auto;
@@ -34,7 +35,7 @@ body {
 .button {
     color: black;
     background-color: #464646;
-    height: 50px;
+    height: 100%;
     padding: 0 30px 0 30px;
     margin: 0;
     text-align: center;
