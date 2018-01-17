@@ -394,12 +394,11 @@ main();
 		<audio id="audio_shoot_2" src="{{ url_for('static', filename='sounds/shoot_2.wav') }}" autostart="false" ></audio>
 		<audio id="alien_killed" src="{{ url_for('static', filename='sounds/alien_killed.wav') }}" autostart="false" ></audio>
 		<div id="on_screen_buttons" class="noselect">
-			<button class="button press" onmousedown="moveTankLeftButton()" onmouseup="stopTankButton()"
-			 	    ontouchstart="moveTankLeftButton()" ontouchend="stopTankButton()">&#8678;</button>
-			<button class="button press" onmousedown="moveTankRightButton()" onmouseup="stopTankButton()"
-			        ontouchstart="moveTankRightButton()" ontouchend="stopTankButton()"
-                    style="margin-left:25px">&#8680;</button>
-			<button class="button press" style="margin-left:100px"onclick="fireTank()">FIRE</button>
+			<button class="button press" style="border-radius: 15px 0 0 15px" onmousedown="moveTankLeftButton()"
+                    onmouseup="stopTankButton()" ontouchstart="moveTankLeftButton()" ontouchend="stopTankButton()">&#8678;</button>
+			<button class="button press" style="border-radius: 0 15px 15px 0" onmousedown="moveTankRightButton()"
+                    onmouseup="stopTankButton()" ontouchstart="moveTankRightButton()" ontouchend="stopTankButton()">&#8680;</button>
+			<button class="button press" style="margin-left:10px; border-radius: 15px" onclick="fireTank()">FIRE</button>
 		</div>
 	</div>
 </body>
