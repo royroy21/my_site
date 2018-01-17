@@ -4,9 +4,9 @@ body {
     font-size: 1.1em;
 }
 #canvas {
-    background-color: #339100;
-    border: 5px solid #D4DCDA;
-    border-radius: 25px;
+    background-color: black;
+    /* border: 5px solid #D4DCDA; */
+    /* border-radius: 25px; */
     display: block;
     margin: 0 auto 0 auto;
 }
