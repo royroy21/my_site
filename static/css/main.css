@@ -34,6 +34,7 @@ body {
 .button {
     color: black;
     background-color: #BECBB7;
+    height: 50px;
     padding: 0 30px 0 30px;
     margin: 0;
     text-align: center;
