@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <audio autoplay>
-        <source src="{{ url_for('static', filename='sounds/player_win.wav') }}">
-    </audio>
+    <audio id="game_sound" src="{{ url_for('static', filename='sounds/player_win.wav') }}" autostart="false" ></audio>
     <h1>Glory is yours!<br />
     <a href="{{ url_for('download_cv') }}">1)DOWNLOAD CV</a><br />
     <a href="https://github.com/royroy21/my_site">2)VIEW CODE</a><br />

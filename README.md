@@ -2,7 +2,7 @@
 
 Contains CV + a space invaders game :)
 
-### Prerequisites
+### Prerequisites:
 
 ```
 Vagrant (https://www.vagrantup.com/)
