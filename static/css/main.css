@@ -32,6 +32,9 @@ body {
     outline: 0 !important;
     border:0 none !important;
 }
+.hidden_button {
+    visibility: hidden;
+}
 .direction_button {
     color: black;
     background-color: #464646;
