@@ -12,6 +12,7 @@ body {
 }
 #on_screen_buttons {
     text-align: center;
+    touch-action: manipulation;
     position: fixed;
     bottom: 15px;
     height: 50px;
