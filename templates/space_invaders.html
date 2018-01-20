@@ -33,6 +33,17 @@ var moveTankRight = false;
 
 var games_failed = parseInt({{ games_failed }});
 
+// Game sound helpers
+function clickHiddenButton(button) {
+    document.getElementById(button).click();
+};
+function playGameSound(sound) {
+    var game_sound = document.getElementById(sound);
+    if (game_sound != null) {
+        game_sound.play();
+    }
+};
+
 // Initiate and start the game
 function main() {
 	// Create game canvas and inputhandeler
@@ -261,9 +272,7 @@ function update() {
 		for (var j = 0, len2 = aliens.length; j < len2; j++) {
 			var a = aliens[j];
 			if (AABBIntersect(b.x, b.y, b.width, b.height, a.x, a.y, a.w, a.h)) {
-
-				var alien_killed = document.getElementById("alien_killed");
-				alien_killed.play();
+				clickHiddenButton('hidden_button_play_alien_killed');
 
 				aliens.splice(j, 1);
 				j--;
@@ -313,8 +322,7 @@ function update() {
 		}
 		// Create and append new bullet
 		bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 2, 4, 4, "white"));
-		var audio_shoot_2 = document.getElementById("audio_shoot_2");
-		audio_shoot_2.play()
+		clickHiddenButton('hidden_button_play_shoot_2');
 	}
 
 	// Check to see if alien bullets hit tank
@@ -390,6 +398,8 @@ function render() {
 main();
 </script>
 	<div id="main">
+        <button class="hidden_button" id="hidden_button_play_shoot_2" onclick="playGameSound('audio_shoot_2')"></button>
+        <button class="hidden_button" id="hidden_button_play_alien_killed" onclick="playGameSound('alien_killed')"></button>
 		<audio id="audio_shoot_1" src="{{ url_for('static', filename='sounds/shoot_1.wav') }}" autostart="false" ></audio>
 		<audio id="audio_shoot_2" src="{{ url_for('static', filename='sounds/shoot_2.wav') }}" autostart="false" ></audio>
 		<audio id="alien_killed" src="{{ url_for('static', filename='sounds/alien_killed.wav') }}" autostart="false" ></audio>
