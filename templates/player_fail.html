@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-    <audio id="game_sound" src="{{ url_for('static', filename='sounds/player_killed.wav') }}" autostart="false" ></audio>
+    <audio autoplay>
+        <source src="{{ url_for('static', filename='sounds/player_killed.wav') }}">
+    </audio>
     <h1>Oh dear you failed!</br>
     <a href="{{ url_for('space_invaders') }}">
         {% if games_failed == 3 %}
