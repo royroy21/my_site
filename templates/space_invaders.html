@@ -203,11 +203,14 @@ function fireTank() {
 // Wrapper around the game loop function, updates and renders the game
 function run() {
 	var loop = function() {
-		var tankKilled = update();
-		if (tankKilled) {
-			window.location.href = "{{ url_for('player_fail') }}";
+		var success = update();
+		if (success == 'success') {
+			window.location.href = "{{ url_for('player_success') }}";
 			return;
-		}
+		} else if (success == 'fail') {
+            window.location.href = "{{ url_for('player_fail') }}";
+            return;
+        }
 		render();
 
 		window.requestAnimationFrame(loop, display.canvas);
@@ -321,7 +324,7 @@ function update() {
 		var alien_bullet = bullets[i];
 		alien_bullet.update();
 		if (KillTank(alien_bullet.x, alien_bullet.y, tank.x, display.height)) {
-			return true;
+			return 'fail';
 		}
 	}
 
@@ -329,13 +332,13 @@ function update() {
 	for (var i = 0, len = aliens.length; i < len; i++) {
 		var alien = aliens[i];
 		if (alien.y > (display.height - 100)) {
-			window.location.href = "{{ url_for('player_fail') }}";
+            return 'fail';
 		}
 	}
 
 	// Check if all aliens are dead
 	if (aliens.length == 0) {
-		window.location.href = "{{ url_for('player_success') }}";
+        return 'success';
 	}
 
 	// Update the aliens at the current movement frequence
