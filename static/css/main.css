@@ -4,8 +4,9 @@ body {
     font-size: 1.1em;
 }
 #canvas {
-    background-color: black;
-    border: 1px solid #464646;
+    background-color: darkgreen;
+    border: 5px solid green;
+    border-radius: 25px;
     display: block;
     margin: 0 auto 0 auto;
 }
@@ -37,7 +38,7 @@ body {
 }
 .direction_button {
     color: black;
-    background-color: #464646;
+    background-color: green;
     height: 100%;
     padding: 0 30px 0 30px;
     margin: 0;
@@ -52,7 +53,7 @@ body {
     margin-left:10px;
     border-radius: 15px;
     background-color: black;
-    color: #464646;
+    color: green;
     height: 100%;
     padding: 0 30px 0 30px;
     margin: 0;

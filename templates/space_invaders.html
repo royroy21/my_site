@@ -194,7 +194,7 @@ function stopTankButton(){
 };
 // Fire tank using on screen fire button
 function fireTankBullet() {
-	bullets.push(new Bullet(tank.x + 10, tank.y, -4, 6, 6, "white"));
+	bullets.push(new Bullet(tank.x + 10, tank.y, -4, 6, 6, "lightgreen"));
 }
 function fireTank() {
 	fireTankBullet();
@@ -315,7 +315,7 @@ function update() {
 			}
 		}
 		// Create and append new bullet
-		bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 2, 4, 4, "white"));
+		bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 2, 4, 4, "lightgreen"));
 		audio_shoot_2.play();
 	}
 
