@@ -1,12 +1,15 @@
 import pdfkit
 
 from flask import Flask, make_response, render_template, session
+from flask_caching import Cache
 from flask_session import Session
+
 
 app = Flask(__name__)
 SESSION_TYPE = 'redis'
 app.config.from_object(__name__)
 Session(app)
+cache = Cache(app, config={'CACHE_TYPE': 'redis'})
 
 
 @app.route('/')
