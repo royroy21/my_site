@@ -78,7 +78,7 @@ body {
     text-align: center;
 }
 #home_screen {
-    color: #ECF2E9;
+    color: lightgreen;
     padding: 0 0 50px 0;
     text-align: justify;
     margin-left: auto;
@@ -97,16 +97,16 @@ body {
 }
 a:link {
     color: black;
-    background-color: #BECBB7;
+    background-color: white;
     text-decoration:none;
 }
 a:hover {
-    color: black;
-    background-color: #D4DCDA;
+    color: red;
+    background-color: lightgreen;
     text-decoration:none;
 }
 a:visited {
     color: black;
-    background-color: #BECBB7;
+    background-color: white;
     text-decoration:none;
 }
