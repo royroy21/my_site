@@ -1,6 +1,5 @@
 body {
-    background: url("../images/pip-boy-background.png") no-repeat;
-    background-size: cover;
+    background-image: radial-gradient(#002700, black);
     font-family: 'Audiowide', cursive;
     font-size: 0.9em;
 }
@@ -67,6 +66,7 @@ body {
     cursor: pointer;
 }
 #footer {
+    background-color: black;
     width: 100%;
     bottom: 0px;
     color: #ECF2E9;
