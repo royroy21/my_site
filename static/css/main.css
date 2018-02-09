@@ -1,12 +1,11 @@
 body {
     background-color: black;
-    font-family: Impact;
+    font-family: 'Audiowide', cursive;
     font-size: 1.1em;
 }
 #canvas {
-    /* background-color: darkgreen; */
     background: url("../images/pip-boy.jpg") no-repeat;
-    background-size: cover;    
+    background-size: cover;
     border: 5px solid green;
     border-radius: 25px;
     display: block;
