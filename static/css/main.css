@@ -1,7 +1,7 @@
 body {
     background-color: black;
     font-family: 'Audiowide', cursive;
-    font-size: 1.1em;
+    font-size: 0.9em;
 }
 #canvas {
     background: url("../images/pip-boy.jpg") no-repeat;
