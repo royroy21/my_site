@@ -1,4 +1,5 @@
 [uwsgi]
+module          = wsgi:app
 uid             = {{ project_user }}
 gid             = {{ project_user }}
 chdir           = {{ project_path }}
@@ -6,10 +7,10 @@ wsgi-file       = {{ project_path }}/wsgi.py
 home            = {{ project_venv }}
 master          = true
 processes       = 10
-socket          = {{ socket_directory }}/fn.sock
+socket          = {{ socket_directory }}/app.sock
 chmod-socket    = 664
 vacuum          = true
 plugins         = python3
 env             = FLASK_APP=app.py
 env             = SECRET_KEY=your_mum
-env             = redis://localhost:6379
+env             = SESSION_REDIS=redis://localhost:6379
