@@ -3,3 +3,16 @@ __pycache__
 
 # ide
 .idea
+
+# secrets
+terraform.tfvars
+password.txt
+
+# terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+
+# virtualenv
+venv

@@ -1,0 +1,14 @@
+server {
+    listen 80;
+    server_name royhanley.com;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:{{ socket_directory }}app.sock;
+    }
+    location /static {
+        root {{ project_path }}/static;
+    }
+}

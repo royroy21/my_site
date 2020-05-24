@@ -1,0 +1,37 @@
+---
+- name: template a file to /etc/nginx/nginx.conf
+  become: yes
+  become_method: sudo
+  template:
+    src: roles/nginx/templates/nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: template a file to /etc/nginx/sites-available/my_site
+  become: yes
+  become_method: sudo
+  template:
+    src: roles/nginx/templates/my_site.j2
+    dest: /etc/nginx/sites-available/my_site
+    owner: "{{ project_user }}"
+    group: "{{ project_user }}"
+    mode: "0644"
+
+- name: create symbolic link to sites-enabled
+  become: yes
+  become_method: sudo
+  file:
+    src: /etc/nginx/sites-available/my_site
+    dest: /etc/nginx/sites-enabled/my_site
+    owner: "{{ project_user }}"
+    group: "{{ project_user }}"
+    state: link
+
+- name: restart nginx
+  become: yes
+  become_method: sudo
+  service:
+    name: nginx
+    state: restarted
