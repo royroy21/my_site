@@ -9,6 +9,6 @@ server {
         uwsgi_pass unix://{{ socket_directory }}/app.sock;
     }
     location /static {
-        root {{ project_path }}/static;
+        root {{ project_path }};
     }
 }
