@@ -1,0 +1,8 @@
+---
+- name: provision my_site server
+  hosts: my_site_server
+  roles:
+    - system_packages
+    - project
+    - uwsgi
+    - nginx

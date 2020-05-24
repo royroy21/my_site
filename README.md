@@ -2,16 +2,9 @@
 
 Contains CV + a space invaders game :)
 
-### Prerequisites:
-
+## to start locally:
 ```
-Vagrant (https://www.vagrantup.com/)
-VirtualBox (https://www.virtualbox.org/)
+Docker version 19.03.8
+docker-compose version 1.23.1
 ```
-
-### To start site on development servers:
-
-```
-vagrant up && vagrant ssh
-. /vagrant/start_dev.sh
-```
+then run `docker-compose up` and view site at `http://localhost:5000/`

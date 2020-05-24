@@ -1,6 +1,18 @@
-.DS_Store
-__pycache__/
-.vagrant/
-ubuntu-xenial-16.04-cloudimg-console.log
-env
-wkhtmltox
+# python
+__pycache__
+
+# ide
+.idea
+
+# secrets
+terraform.tfvars
+password.txt
+
+# terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+
+# virtualenv
+venv

@@ -1,0 +1,5 @@
+---
+- import_tasks: download_project.yml
+- import_tasks: install_virtualenv.yml
+- import_tasks: install_requirements.yml
+- import_tasks: clean_up_pyc_files.yml
