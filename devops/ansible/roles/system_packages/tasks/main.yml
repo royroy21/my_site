@@ -13,5 +13,5 @@
       - redis-server
       - uwsgi
       - uwsgi-plugin-python3
-      - wkhtmltop
+      - wkhtmltopdf
       - xvfb
