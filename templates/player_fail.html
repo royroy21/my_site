@@ -1,10 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-{% cache None %}
     <audio autoplay>
         <source src="{{ url_for('static', filename='sounds/player_killed.wav') }}">
     </audio>
     <h1>Oh dear you failed!</br>
     <a href="{{ url_for('space_invaders') }}">erm... we'll make it a little easier for you!</a></h1>
-{% endcache %}
 {% endblock %}
