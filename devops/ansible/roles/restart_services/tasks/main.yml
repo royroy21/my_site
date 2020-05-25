@@ -1,0 +1,13 @@
+- name: restart uwsgi
+  become: yes
+  become_method: sudo
+  service:
+    name: uwsgi
+    state: restarted
+
+- name: restart nginx
+  become: yes
+  become_method: sudo
+  service:
+    name: nginx
+    state: restarted

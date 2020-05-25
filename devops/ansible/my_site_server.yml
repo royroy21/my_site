@@ -6,3 +6,4 @@
     - project
     - uwsgi
     - nginx
+    - restart_services

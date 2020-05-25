@@ -19,7 +19,7 @@
     group: "{{ project_user }}"
     mode: "0644"
 
-- name: create symbolic link to sites-enabled
+- name: create symbolic link to /etc/nginx/sites-enabled
   become: yes
   become_method: sudo
   file:
@@ -28,10 +28,3 @@
     owner: "{{ project_user }}"
     group: "{{ project_user }}"
     state: link
-
-- name: restart nginx
-  become: yes
-  become_method: sudo
-  service:
-    name: nginx
-    state: restarted

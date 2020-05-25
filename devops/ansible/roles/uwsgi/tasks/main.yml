@@ -9,19 +9,22 @@
     state: directory
     mode: "0770"
 
-- name: template a file to /etc/uwsgi/apps-enabled/my_site.ini
+- name: template a file to /etc/uwsgi/apps-available/my_site.ini
   become: yes
   become_method: sudo
   template:
     src: roles/uwsgi/templates/my_site.j2
-    dest: /etc/uwsgi/apps-enabled/my_site.ini
+    dest: /etc/uwsgi/apps-available/my_site.ini
     owner: "{{ project_user }}"
     group: "{{ project_user }}"
-    mode: '0500'
+    mode: "0500"
 
-- name: restart uwsgi
+- name: create symbolic link to /etc/uwsgi/sites-enabled
   become: yes
   become_method: sudo
-  service:
-    name: uwsgi
-    state: restarted
+  file:
+    src: /etc/uwsgi/sites-available/my_site.ini
+    dest: /etc/uwsgi/sites-enabled/my_site.ini
+    owner: "{{ project_user }}"
+    group: "{{ project_user }}"
+    state: link

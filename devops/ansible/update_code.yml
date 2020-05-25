@@ -1,0 +1,6 @@
+---
+- name: update code only
+  hosts: my_site_server
+  roles:
+    - project
+    - restart_services
