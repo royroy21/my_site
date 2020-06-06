@@ -24,16 +24,16 @@ def home():
     return render_template("home.html")
 
 
-@app.route("/space-invaders")
-def space_invaders():
+@app.route("/game")
+def game():
     return render_template(
         "space_invaders.html",
         games_failed=session["games_failed"],
     )
 
 
-@app.route("/player-fail")
-def player_fail():
+@app.route("/fail")
+def fail():
     session["games_failed"] += 1
     return render_template(
         "player_fail.html",
@@ -41,14 +41,14 @@ def player_fail():
     )
 
 
-@app.route("/player-success")
-def player_success():
+@app.route("/success")
+def success():
     session["games_failed"] = 0
     return render_template("player_success.html")
 
 
 @app.route("/download-cv")
-def download_cv():
+def cv():
     rendered = render_template("cv.html")
     config = pdfkit.configuration(wkhtmltopdf="/usr/bin/wkhtmltopdf")
     pdf = pdfkit.from_string(rendered, False, configuration=config)

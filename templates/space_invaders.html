@@ -205,10 +205,10 @@ function run() {
 	var loop = function() {
 		var success = update();
 		if (success == 'success') {
-			window.location.href = "{{ url_for('player_success') }}";
+			window.location.href = "{{ url_for('success') }}";
 			return;
 		} else if (success == 'fail') {
-            window.location.href = "{{ url_for('player_fail') }}";
+            window.location.href = "{{ url_for('fail') }}";
             return;
         }
 		render();
