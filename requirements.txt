@@ -4,7 +4,7 @@ Flask==1.1.2
 Flask-Caching==1.8.0
 Flask-Session==0.3.2
 itsdangerous==1.1.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 pdfkit==0.6.1
 redis==3.5.2
