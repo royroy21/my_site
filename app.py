@@ -51,7 +51,12 @@ def success():
 def cv():
     rendered = render_template("cv.html")
     config = pdfkit.configuration(wkhtmltopdf="/usr/bin/wkhtmltopdf")
-    pdf = pdfkit.from_string(rendered, False, configuration=config)
+    pdf = pdfkit.from_string(
+        input=rendered,
+        output_path=False,
+        configuration=config,
+        options={"enable-local-file-access": ""},
+    )
 
     response = make_response(pdf)
     response.headers["Content-Type"] = "application/pdf"
