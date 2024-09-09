@@ -1,6 +1,6 @@
 # My site!
 
-Contains CV + a space invaders game :)
+Contains CV + a space invaders game
 
 ## to start locally:
 ```
